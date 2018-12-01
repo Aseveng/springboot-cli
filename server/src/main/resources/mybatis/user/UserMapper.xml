@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.forvue.user.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.forvue.entity.user.User">
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="password_salt" jdbcType="VARCHAR" property="passwordSalt" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <insert id="insert" parameterType="com.forvue.entity.user.User">
+    insert into user (id, password, password_salt, username
+    )
+    values (#{id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{passwordSalt,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR})
+  </insert>
+</mapper>

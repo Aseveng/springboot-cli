@@ -1,0 +1,19 @@
+server:
+# 应用服务端口号,根据实际情况设置
+  port: 8099
+  tomcat:
+#   请求参数的编码设置
+    uri-encoding: utf-8
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_cli
+    username: root
+    password: admin
+#mybatis配置
+mybatis:
+  configuration:
+#    开启驼峰转换
+    map-underscore-to-camel-case: true
+# 需要注意配置mapper文件的扫描路径
+  mapper-locations: mybatis/**/*Mapper.xml
