@@ -1,6 +1,6 @@
 server:
 # 应用服务端口号,根据实际情况设置
-  port: 8099
+  port: 8089
   tomcat:
 #   请求参数的编码设置
     uri-encoding: utf-8
@@ -17,3 +17,12 @@ mybatis:
     map-underscore-to-camel-case: true
 # 需要注意配置mapper文件的扫描路径
   mapper-locations: mybatis/**/*Mapper.xml
+
+#配置日志
+logging:
+  #配置日志文件路径
+  path: e:\lgo
+  level:
+    xatu.zsl: debug #不同目录下的日志可配置不同级别
+    org.springfromework.web: info
+    org.hibernate: error

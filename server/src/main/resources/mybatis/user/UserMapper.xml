@@ -9,7 +9,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <insert id="insert" parameterType="com.forvue.entity.user.User">
-    insert into user (id, password, password_salt, username
+    insert into users (id, password, password_salt, username
     )
     values (#{id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{passwordSalt,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR})
   </insert>

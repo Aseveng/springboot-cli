@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int insert(User user) {
+        //密码加密
         md5Encrypt.encryptPassword(user);
         int count = userMapper.insert(user);
         return count;

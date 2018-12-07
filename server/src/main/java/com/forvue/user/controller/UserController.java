@@ -36,7 +36,6 @@ public class UserController {
     public  String login(@RequestBody Map<String,Object>map){
         String username= (String) map.get("username");
         String password= (String) map.get("password");
-
         return shiroUtils.login(username,password);
 
     }
@@ -50,7 +49,6 @@ public class UserController {
     @ResponseBody
     public void registe(@RequestBody User user){
         userService.insert(user);
-
     }
 
 }
