@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by gqc on 2018/11/28.
+ * shiro工具类
+ *
  */
 @Component
 public class ShiroUtils {
@@ -30,12 +32,20 @@ public class ShiroUtils {
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+
         try {
             token.getPassword();
             //4、登录，即身份验证
             //String newPassword=md5Encrypt.encryptPassword(subject);
             subject.login(token);
-            return "登录成功";
+            //判断是否是管理员
+            boolean isAdmin=subject.hasRole("admin");
+            if(isAdmin) {
+                return "登录成功管理员";
+            }
+            else{
+                return "登录成功";
+            }
         } catch (AuthenticationException e) {
             //5、身份验证失败
             return "登录失败";
