@@ -16,10 +16,13 @@ import org.springframework.stereotype.Component;
  * shiro工具类
  *
  */
+
 @Component
 public class ShiroUtils {
     @Autowired
     Md5Encrypt md5Encrypt;
+
+
     public String login( String username, String password) {
         //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
         Factory<SecurityManager> factory =
@@ -49,7 +52,6 @@ public class ShiroUtils {
         } catch (AuthenticationException e) {
             //5、身份验证失败
             return "登录失败";
-
         }
     }
     public Subject subject() {
