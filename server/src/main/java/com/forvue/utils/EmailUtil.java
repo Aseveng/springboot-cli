@@ -51,11 +51,18 @@ public class EmailUtil {
         //创建邮件对象
         MimeMessage message=new MimeMessage(session);
         //指明邮件的发件人
-        message.setFrom(new InternetAddress("aseveng@sina.com"));
+        message.setFrom(new InternetAddress("610286036@qq.com"));
         //指明邮件的收件人
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress("aseveng@sina.com"));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress("610286036@qq.com"));
         //标题
-        message.setSubject("天气预报");
+        if(text.indexOf("雨")!=-1) {
+            message.setSubject("今日有雨,媳妇请带伞");
+        }else if(text.indexOf("雪")!=-1){
+            message.setSubject("今日有雪,媳妇要加衣");
+        }else{
+            message.setSubject("今日无雨");
+        }
+
         //内容（纯文本）
         message.setContent(text, "text/html;charset=UTF-8");
         return message;

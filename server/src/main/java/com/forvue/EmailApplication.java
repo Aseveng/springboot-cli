@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class EmailApplication {
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(ServerApplication.class, args);
+        SpringApplication.run(EmailApplication.class, args);
 
        ScheduledTasks scheduledTasks =new ScheduledTasks();
        scheduledTasks.scheduledEmail();
