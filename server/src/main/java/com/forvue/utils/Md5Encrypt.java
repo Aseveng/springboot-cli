@@ -17,7 +17,6 @@ public class  Md5Encrypt {
     private String algorithmName = "md5";
     private final int hashIterations = 2;
 
-
     public  void encryptPassword(User user) {
         // User对象包含最基本的字段Username和Password
         user.setSalt(randomNumberGenerator.nextBytes().toHex());

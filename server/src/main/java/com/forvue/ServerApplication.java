@@ -9,9 +9,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-//@SpringBootApplication
-//@Configuration
-//@EnableAutoConfiguration
+@SpringBootApplication
+@Configuration
+@EnableAutoConfiguration
 public class ServerApplication {
 
 
@@ -43,6 +43,5 @@ public class ServerApplication {
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
-
 	}
 }

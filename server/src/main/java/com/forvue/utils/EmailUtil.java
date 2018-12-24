@@ -24,7 +24,6 @@ public class EmailUtil {
         prop.setProperty("mail.smtp.auth", "true");
         //基于javaMail 实现邮件发送
 
-
         //第一步建立Session javax.mail的Session
         Session session=Session.getInstance(prop);
         //开启Session的debug模式 可以看到邮件状态
@@ -34,12 +33,13 @@ public class EmailUtil {
         //第三步使用邮箱的用户名和密码连上邮件服务器，发送邮件时，发件人需要提交邮箱的用户名和密码给smtp服务器，
         // 用户名和密码都通过验证之后才能够正常发送邮件给收件人。
         Transport ts=session.getTransport();
-        ts.connect("smtp.sina.com","aseveng","wagwwa7");
+        ts.connect("smtp.sina.com","username","password");
         //第四步 创建邮件
         Message message= createSimpleMail(session,weatherText);
 
         ts.sendMessage(message, message.getAllRecipients());
         ts.close();
+
     }
 
     /**
@@ -51,9 +51,9 @@ public class EmailUtil {
         //创建邮件对象
         MimeMessage message=new MimeMessage(session);
         //指明邮件的发件人
-        message.setFrom(new InternetAddress("610286036@qq.com"));
+        message.setFrom(new InternetAddress("username@sina.com"));
         //指明邮件的收件人
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress("610286036@qq.com"));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress("username@qq.com"));
         //标题
         if(text.indexOf("雨")!=-1) {
             message.setSubject("今日有雨,媳妇请带伞");
@@ -62,7 +62,6 @@ public class EmailUtil {
         }else{
             message.setSubject("今日无雨");
         }
-
         //内容（纯文本）
         message.setContent(text, "text/html;charset=UTF-8");
         return message;

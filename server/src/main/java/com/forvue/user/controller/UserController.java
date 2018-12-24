@@ -1,16 +1,17 @@
 package com.forvue.user.controller;
 
+import com.forvue.entity.user.Manager;
 import com.forvue.entity.user.User;
+import com.forvue.user.service.ManagerService;
 import com.forvue.user.service.UserService;
 import com.forvue.utils.Md5Encrypt;
+import com.forvue.utils.R;
 import com.forvue.utils.ShiroUtils;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +29,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ManagerService managerService;
     /**
      * 用户登录
      *
@@ -37,13 +40,11 @@ public class UserController {
         String username= (String) map.get("username");
         String password= (String) map.get("password");
         return shiroUtils.login(username,password);
-
     }
-
     /**
      * 注册
      * 加密密码
-     * @param map
+     * @param
      */
     @RequestMapping("/registe")
     @ResponseBody
@@ -51,4 +52,16 @@ public class UserController {
         userService.insert(user);
     }
 
+
+    /**
+     *
+     */
+    @GetMapping("/ManagerList")
+    @ResponseBody
+    public R listManager(){
+        List<Manager> list=managerService.SelectAll();
+        R r=R.ok();
+        r.put("data",list);
+        return r;
+    }
 }

@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 //定时任务的注解
 @EnableScheduling
-@SpringBootApplication
+//@SpringBootApplication
 public class EmailApplication {
 
     public static void main(String[] args) throws Exception {
