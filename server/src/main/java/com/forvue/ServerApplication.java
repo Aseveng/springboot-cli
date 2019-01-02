@@ -11,7 +11,6 @@ import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
 @Configuration
-@EnableAutoConfiguration
 public class ServerApplication {
 
 
